@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sam's Club $750 Gift Card</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    /* Header / Offer Card */
+    .offer-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      background: #0067a0;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .claim-note {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 22px;
+    }
+
+    .claim-note strong {
+      color: #0067a0;
+    }
+
+    /* Steps */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      background: #0067a0;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 15px;
+      font-weight: 500;
+      color: #222;
+    }
+
+    /* CTA Button */
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #0067a0 0%, #004d7a 100%);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(0, 103, 160, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      margin-bottom: 12px;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 103, 160, 0.4);
+    }
+
+    .no-cc {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    /* Testimonial */
+    .testimonial {
+      background: #f0f7fb;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: left;
+      margin-bottom: 8px;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #0067a0;
+      margin-bottom: 4px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: #333;
+      font-style: italic;
+    }
+
+    .rating {
+      margin-top: 14px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .stars {
+      color: #f5a623;
+      letter-spacing: 1px;
+    }
+
+    .stats {
+      font-size: 13px;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      margin-top: 32px;
+    }
+
+    .faq-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #111;
+      text-align: center;
+    }
+
+    .faq-item {
+      background: #fff;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 16px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a1a;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-question:hover {
+      background: #fafbfc;
+    }
+
+    .faq-icon {
+      font-size: 18px;
+      color: #888;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease, padding 0.25s ease;
+      padding: 0 18px;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.55;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding: 0 18px 16px;
+    }
+
+    /* Footer disclaimer */
+    .disclaimer {
+      margin-top: 28px;
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      line-height: 1.6;
+      padding: 0 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Main Offer Card -->
+    <div class="offer-card">
+      <div class="brand-logo">Sam's</div>
+      <h1>Sam's Club $750 Gift Card</h1>
+      <p class="claim-note"><strong>Jessica M.</strong> claimed $750! • Austin, TX • 18 min ago</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">Click The Button Below</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">Enter Your Basic Info</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">Complete 3-5 Deals</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text">Claim Your Reward</div>
+        </div>
+      </div>
+
+      <a href="#" class="cta-btn">CLAIM YOUR GIFT CARD →</a>
+      <p class="no-cc">No credit card required</p>
+
+      <div class="testimonial">
+        <div class="testimonial-name">Brittany S. ✓</div>
+        <div class="testimonial-text">"Completed the steps and got my $750 in 2 days!"</div>
+      </div>
+
+      <div class="rating">
+        <span class="stars">★★★★☆</span>
+        <strong>4.8/5</strong> (2,341 reviews)
+      </div>
+      <div class="stats">13,037 claimed • ✓ Verified Offer</div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <div class="faq-title">Frequently Asked Questions</div>
+
+      <div class="faq-item open">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Does it only work for students?
+          <span class="faq-icon">⌃</span>
+        </button>
+        <div class="faq-answer">
+          No, it's available for anyone, anywhere can claim this offer.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How long does it take to receive my gift card?
+          <span class="faq-icon">⌃</span>
+        </button>
+        <div class="faq-answer">
+          After completing all required tasks, allow 3-5 business days for gift card delivery.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What kind of tasks do I need to complete?
+          <span class="faq-icon">⌃</span>
+        </button>
+        <div class="faq-answer">
+          Tasks typically include signing up for partner services, playing games, completing surveys, and trying out new apps.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I claim the reward multiple times?
+          <span class="faq-icon">⌃</span>
+        </button>
+        <div class="faq-answer">
+          Yes! You can repeat the process and claim rewards multiple times.
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <p class="disclaimer">
+      Independent design preview. Not affiliated with Sam's Club or any retailer. Offer terms, eligibility, delivery times, and rating shown are reproduced from the reference and are not verified. The Claim Now buttons open a third-party offer link in a new tab; this page may earn a commission from that link.
+    </p>
+
+  </div>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+      
+      // Open clicked one if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    }
+  </script>
+</body>
+</html>
